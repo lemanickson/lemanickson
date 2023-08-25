@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    
+<title>Login</title>
+  
+  <style>
+     
+   body {
+           
+      font-family: Arial, sans-serif;
+           
+       background-color: #f7f7f7;
+         
+            margin: 0;
+          
+           padding: 0;
+       
+     }
+
+       
+ .container {
+            
+           max-width: 400px;
+            
+            margin: 0 auto;
+           
+            padding: 20px;
+           
+             border: 1px solid #ccc;
+           
+               border-radius: 5px;
+            
+               background-color: #fff;
+           
+               box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+       
+        }
+
+       
+       .form-group {
+            
+                  margin-bottom: 20px;
+       
+         }
+
+       
+        .form-group label {
+            
+                            display: block;
+            
+                            font-weight: bold;
+      
+         }
+
+       
+            .form-group input[type="text"],
+       
+            .form-group input[type="password"] 
+          {
+            width: 100%;
+           
+                  padding: 10px;
+            
+                  border: 1px solid #ccc;
+            
+                   border-radius: 5px;
+        
+   }
+
+      
+        .btn {
+           
+               padding: 10px 20px;
+           
+                background-color: #007bff;
+            
+                   color: #fff;
+            
+                   border: none;
+            
+                    border-radius: 5px;
+            
+                     cursor: pointer;
+       
+               }
+
+        
+          .btn-create-account,
+   .btn-forgot-password
+              {
+           
+                 margin-top: 10px;
+            
+                 background-color: #28a745;
+            
+                     color: #fff;
+        
+                  }
+
+        
+               .btn-forgot-password {
+            
+                                       background-color: #dc3545;
+       
+                 }
+
+        /* Center the login title and image */
+       
+                          
+                   .login-title {
+ 
+                                  text-align: center;
+     
+                                }
+
+       
+                                .login-image {
+         
+                                               display: block;
+           
+                                              margin: 0 auto 20px;
+            
+                                             width: 150px; /* Adjust the width as needed */
+           
+                                             border-radius: 50%;
+       
+                                       }
+  
+          </style>
+
+           </head>
+            
+<body>
+
+          <div class="container">
+    
+            <!-- Image centered before the login title -->
+  
+                <div class="login-title">
+       
+                <img src="tanapa logo.png" alt="Logo" class="login-image">
+       
+                     <h2>Login</h2>
+    
+                    </div>
+
+    <form id="login-form" onsubmit="return validateForm()">
+        <div class="form-group">
+            
+                    <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+      
+           </div>
+
+       
+         <div class="form-group">
+           
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        
+             </div>
+
+       
+          <div class="form-group">
+            
+           <button type="submit" class="btn" style="background-color: #006400;">Login</button>
+       
+       </div>
+    
+        </form>
+
+   
+            <div>
+        
+         <button class="btn btn-create-account" onclick="redirectToCreateAccount()" style="background-color: #068E17;">Create New Account</button>
+ 
+       <button class="btn btn-forgot-password" onclick="redirectToForgotPassword()" style="background-color: #dc3545;">Forgot Password</button>
+    
+          </div>
+
+   </div>
+
+    
+<script>
+    function redirectToCreateAccount() {
+      // Replace "create_account.html" with the URL of your create account page.
+      window.location.href = "create_account.html";
+    }
+
+   
+ function redirectToForgotPassword() 
+              {
+      // Replace "forgot_password.html" with the URL of your forgot password page.
+      window.location.href = "forgot_password.html";
+    }
+
+   
+ function validateForm() {
+    
+              var username = document.getElementById("username").value.trim();
+      var password = document.getElementById("password").value.trim();
+
+      if (username === "" || password === "") {
+        alert("Please enter both username and password.");
+        return false;
+      }
+
+     
+          return true;
+    }
+  
+        </script>
+
+          </body>
+          
+</html>

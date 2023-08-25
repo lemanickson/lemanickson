@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create New Account</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+            text-align: center; /* Add text-align center to center the image and title */
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="password"],
+        .form-group input[type="email"],
+        .form-group input[type="tel"],
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .btn-large {
+            padding: 15px 30px;
+            font-size: 18px;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        .login-image {
+            display: block;
+            margin: 0 auto 20px;
+            width: 150px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <img src="tanapa logo.png" alt="Logo" class="login-image">
+    <h2>Create New Account</h2>
+    <form id="create-account-form" onsubmit="return validateForm()">
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required>
+        </div>
+
+        <div class="form-group">
+            <label for="address">Address:</label>
+            <textarea id="address" name="address" required></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="level">Select Your Level:</label>
+            <select id="level" name="level" required>
+                <option value="">Select your level</option>
+                <option value="headquarter">Headquarter Level</option>
+                <option value="zone">Zone Level</option>
+                <option value="parks">Parks Level</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="rank">Rank:</label>
+            <input type="text" id="rank" name="rank" required>
+        </div>
+
+        <div class="form-group">
+            <label for="authority">Authority:</label>
+            <input type="text" id="authority" name="authority" required>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-large">Create Account</button>
+        </div>
+    </form>
+</div>
+<script>
+    function redirectToLogin() {
+        // Replace "login.html" with the URL of your login interface.
+        window.location.href = "loginInterface.html";
+    }
+
+    function validateForm() {
+        // Here, you can add more validation logic if needed
+        // For example, check if the email is in a valid format, password strength, etc.
+
+        alert("Account created successfully!"); // You can replace this with your actual account creation logic.
+        redirectToLogin();
+        return false; // Prevent form submission for this example.
+    }
+
+    // JavaScript to handle form submission
+    document.getElementById("create-account-form").addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        // Retrieve form data
+        const formData = new FormData(event.target);
+        const data = {};
+        formData.forEach((value, key) => {
+            data[key] = value;
+        });
+
+        // Make a POST request to the PHP server
+        fetch("create_account.php", {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+            .then(response => response.text())
+            .then(responseText => {
+                alert(responseText);
+                redirectToLogin();
+            })
+            .catch(error => {
+                console.error("Error creating account: " + error.message);
+                alert("Error creating account. Please try again later.");
+            });
+    });
+</script>
+</body>
+</html>
